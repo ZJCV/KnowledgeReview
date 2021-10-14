@@ -24,6 +24,8 @@
 |   ResNet50  | 83.540 | 96.820 |   ResNet152   | 85.490 | 97.590 | CIFAR100 |   6.0  | 86.240 | 97.610 |
 |   ResNet50  | 83.540 | 96.820 | ResNeXt_32x8d | 85.720 | 97.650 | CIFAR100 |   6.0  | 86.220 | 97.490 |
 
+more see [docs](./docs/README.md)
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -49,7 +51,17 @@ $ pip install -r requirements.txt
 
 ## Usage
 
-...
+* Train
+
+```angular2html
+$ CUDA_VISIBLE_DEVICES=0 python tools/train.py -cfg=configs/resnet/ofd_2_0_r50_pret_r18_c100_224_e100_sgd_mslr.yaml
+```
+
+* Test
+
+```angular2html
+$ CUDA_VISIBLE_DEVICES=0 python tools/test.py -cfg=configs/resnet/ofd_2_0_r50_pret_r18_c100_224_e100_sgd_mslr.yaml
+```
 
 ## Maintainers
 
