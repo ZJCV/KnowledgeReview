@@ -15,6 +15,15 @@
   <a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"></a>
 </p>
 
+|     arch_s    |  top1  |  top5  |     arch_t    |  top1  |  top5  |  dataset | lambda |  top1  |  top5  |
+|:-----------:|:------:|:------:|:-------------:|:------:|:------:|:--------:|:------:|:------:|:------:|
+| MobileNetv2 | 80.620 | 95.820 |    ResNet50   | 83.540 | 96.820 | CIFAR100 |  7.0  | 83.370 | 96.810 |
+| MobileNetv2 | 80.620 | 95.820 |    ResNet152   | 85.490 | 97.590 | CIFAR100 |  8.0  | 84.530 | 97.470 |
+| MobileNetv2 | 80.620 | 95.820 |    ResNeXt_32x8d   | 85.720 | 97.650 | CIFAR100 |  6.0  | 84.520 | 97.470 |
+|   ResNet18  | 80.540 | 96.040 |    ResNet50   | 83.540 | 96.820 | CIFAR100 |   10.0  | 83.130 | 96.350 |
+|   ResNet50  | 83.540 | 96.820 |   ResNet152   | 85.490 | 97.590 | CIFAR100 |   6.0  | 86.240 | 97.610 |
+|   ResNet50  | 83.540 | 96.820 | ResNeXt_32x8d | 85.720 | 97.650 | CIFAR100 |   6.0  | 86.220 | 97.490 |
+
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
