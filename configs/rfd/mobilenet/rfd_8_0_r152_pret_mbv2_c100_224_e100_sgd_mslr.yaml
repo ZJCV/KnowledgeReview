@@ -3,7 +3,7 @@ NUM_NODES: 1
 RANK_ID: 0
 DIST_BACKEND: "nccl"
 RNG_SEED: 1
-OUTPUT_DIR: 'outputs/rfd/rfd_2_0_r50_pret_r18_c100_224_e100_sgd_mslr'
+OUTPUT_DIR: 'outputs/rfd/rfd_8_0_r152_pret_mbv2_c100_224_e100_sgd_mslr'
 TRAIN:
   LOG_STEP: 10
   GRADIENT_ACCUMULATE_STEP: 1
@@ -35,14 +35,14 @@ DATALOADER:
   RANDOM_SAMPLE: True
   PREFETCHER: True
 DISTILL:
-  T_ARCH: 'resnet50'
+  T_ARCH: 'resnet152'
   T_NUM_CLASSES: 100
-  T_PRELOADED: 'outputs/benchmark/r50_c100_224_e100_sgd_mslr/model_0096.pth'
-  S_ARCH: 'resnet18'
+  T_PRELOADED: 'outputs/benchmark/r152_c100_224_e100_sgd_mslr/model_0097.pth'
+  S_ARCH: 'mobilenet_v2'
   S_NUM_CLASSES: 100
   S_PRELOADED: ''
   DISTILLER: 'RFD'
-  LAMBDA: 2.0
+  LAMBDA: 8.0
 MODEL:
   CRITERION:
     NAME: 'RFDLoss'
