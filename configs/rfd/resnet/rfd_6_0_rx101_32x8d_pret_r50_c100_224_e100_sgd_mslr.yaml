@@ -37,7 +37,7 @@ DATALOADER:
 DISTILL:
   T_ARCH: 'resnext101_32x8d'
   T_NUM_CLASSES: 100
-  T_PRELOADED: 'outputs/benchmark/rx101_32x8d_c100_224_e100_sgd_mslr/model_0092.pth'
+  T_PRELOADED: 'outputs/benchmark/rx101_32x8d_c100_224_e100_sgd_mslr/model_0074.pth'
   S_ARCH: 'resnet50'
   S_NUM_CLASSES: 100
   S_PRELOADED: ''

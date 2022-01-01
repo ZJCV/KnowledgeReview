@@ -37,7 +37,7 @@ DATALOADER:
 DISTILL:
   T_ARCH: 'resnet50'
   T_NUM_CLASSES: 100
-  T_PRELOADED: 'outputs/benchmark/r50_c100_224_e100_sgd_mslr/model_final.pth'
+  T_PRELOADED: 'outputs/benchmark/r50_c100_224_e100_sgd_mslr/model_0072.pth'
   S_ARCH: 'mobilenet_v2'
   S_NUM_CLASSES: 100
   S_PRELOADED: ''
