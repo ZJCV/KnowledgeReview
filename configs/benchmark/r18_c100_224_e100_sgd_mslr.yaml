@@ -19,15 +19,15 @@ DATASET:
   TEST_ROOT: './data/cifar'
   TOP_K: (1, 5)
 TRANSFORM:
-  TRAIN_METHODS: ('Resize', 'RandomCrop', 'RandomHorizontalFlip', 'AUTO_AUGMENT', 'ToTensor', 'Normalize')
-  TEST_METHODS: ('Resize', 'CenterCrop', 'ToTensor', 'Normalize')
-  TRAIN_RESIZE: (256, )
-  TEST_RESIZE: (224, )
-  TRAIN_CROP: (224, 224)
-  TEST_CROP: (224, 224)
-  AUGMENT_POLICY: "cifar10"
-  MEAN: (0.45, 0.45, 0.45)
-  STD: (0.225, 0.225, 0.225)
+  TRAIN_METHODS: ('Resize', 'RandomCrop', 'HorizontalFlip', 'AutoAugment', 'Normalize', 'ToTensor')
+  TEST_METHODS: ('Resize', 'CenterCrop', 'Normalize', 'ToTensor')
+  TRAIN_RESIZE: ((256, ), 1, 0, 1.0)
+  TEST_RESIZE: ((224, ), 1, 0, 1.0)
+  TRAIN_CENTER_CROP: ((224, 224), 1.0)
+  TEST_CENTER_CROP: ((224, 224), 1.0)
+  AUTOAUGMENT: ("cifar10", 1.0)
+  NORMALIZE: ((0.45, 0.45, 0.45), (0.225, 0.225, 0.225), 255.0, 1.0)
+  TO_TENSOR: 1.0
 DATALOADER:
   TRAIN_BATCH_SIZE: 128
   TEST_BATCH_SIZE: 128
@@ -44,21 +44,23 @@ DISTILL:
   DISTILLER: ''
 MODEL:
   CRITERION:
-    NAME: 'CrossEntropyLoss'
+    NAME: 'LabelSmoothingLoss'
+    SMOOTHING: 0.1
+    REDUCTION: 'mean'
 OPTIMIZER:
   NAME: 'SGD'
   LR: 0.05
   MOMENTUM: 0.9
   WEIGHT_DECAY:
     DECAY: 1e-4
-    NO_BIAS: True
-    NO_NORM: True
+    NO_BIAS: False
+    NO_NORM: False
 LR_SCHEDULER:
   NAME: 'MultiStepLR'
   IS_WARMUP: True
   GAMMA: 0.1
   MULTISTEP_LR:
-    MILESTONES: [ 40, 60, 80 ]
+    MILESTONES: [ 30, 60, 90 ]
   WARMUP:
     ITERATION: 5
     MULTIPLIER: 1.0
