@@ -13,14 +13,14 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 import torchvision.models as models
-from torchvision.models.mobilenetv2 import InvertedResidual, ConvBNActivation
+from torchvision.models.mobilenetv2 import InvertedResidual, ConvBNActivation, ConvNormActivation
 
 from zcls.config.key_word import KEY_OUTPUT
 from rfd.config.key_word import KEY_FEAT
 
 
 def get_feats_before_relu(module, x):
-    if isinstance(module, ConvBNActivation):
+    if isinstance(module, (ConvBNActivation, ConvNormActivation)):
         # Conv2d
         x = module[0](x)
         # BatchNorm2d

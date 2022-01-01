@@ -14,7 +14,7 @@ import torch
 # from zcls.config import cfg
 from zcls.data.build import build_data
 # from zcls.model.recognizers.build import build_recognizer
-# from zcls.engine.inference import do_evaluation
+from zcls.engine.inference import do_evaluation
 from zcls.util.collect_env import collect_env_info
 from zcls.util import logging
 from zcls.util.distributed import get_device, get_local_rank
@@ -26,7 +26,6 @@ logger = logging.get_logger(__name__)
 
 from rfd.config import cfg
 from rfd.distill.build import build_distiller
-from rfd.engine.inference import do_evaluation
 
 
 def test(cfg):
@@ -46,8 +45,8 @@ def test(cfg):
     # model = build_recognizer(cfg, device=device)
     model = build_distiller(cfg, device=device)
 
-    test_data_loader = build_data(cfg, is_train=False)
-
+    test_data_loader = build_data(cfg, is_train=False, device_type=device.type,
+                                  rank_id=local_rank_id)
     synchronize()
     do_evaluation(cfg, model, test_data_loader, device)
 

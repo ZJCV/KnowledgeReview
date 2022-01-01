@@ -11,6 +11,7 @@ import torch
 
 import torch.nn as nn
 import torch.nn.functional as F
+from torch.nn.modules.module import T
 from zcls.config.key_word import KEY_OUTPUT
 from zcls.model.init_helper import init_weights
 
@@ -81,15 +82,11 @@ class RFDDistiller(nn.Module):
             s_transform_list.append(ABF(s_channel, t_channel, mid_channel, idx != 0))
 
         self.t_net = t_net
-        # freeze grad update abd use eval state
-        self.t_net.requires_grad_(False)
-        self.t_net.eval()
-
         self.s_net = s_net
-        self.s_net.train()
 
         self.s_transform_list = nn.ModuleList(s_transform_list)
         # self.__init_weights__()
+        self.train()
 
     def __init_weights__(self):
         for student_transform in self.s_transform_list:
@@ -123,3 +120,15 @@ class RFDDistiller(nn.Module):
             KEY_T_FEAT: t_transform_feat_list,
             KEY_S_FEAT: res_s_transform_feat_list
         }
+
+    def train(self: T, mode: bool = True) -> T:
+        # return super().train(mode)
+        for name, children in self.named_children():
+            if 't_net' == name:
+                # freeze grad update and set eval state
+                children.requires_grad_(False)
+                children.eval()
+            else:
+                children.train()
+
+        return self

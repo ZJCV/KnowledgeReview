@@ -13,7 +13,7 @@ import torch
 
 # from zcls.config import cfg
 from zcls.data.build import build_data
-# from zcls.engine.trainer import do_train
+from zcls.engine.trainer import do_train
 # from zcls.model.recognizers.build import build_recognizer
 # from zcls.model.criterions.build import build_criterion
 from zcls.optim.optimizers.build import build_optimizer
@@ -30,7 +30,6 @@ logger = logging.get_logger(__name__)
 from rfd.config import cfg
 from rfd.criterion.build import build_criterion
 from rfd.distill.build import build_distiller
-from rfd.engine.trainer import do_train
 
 
 def train(cfg):
@@ -75,8 +74,10 @@ def train(cfg):
                 logger.info('warmup end')
         logger.info('resume end')
 
-    train_data_loader = build_data(cfg, is_train=True)
-    test_data_loader = build_data(cfg, is_train=False)
+    train_data_loader = build_data(cfg, is_train=True, device_type=device.type,
+                                   rank_id=local_rank_id, epoch=arguments['cur_epoch'])
+    test_data_loader = build_data(cfg, is_train=False, device_type=device.type,
+                                  rank_id=local_rank_id)
 
     logger.info('init end')
     synchronize()
@@ -84,7 +85,6 @@ def train(cfg):
              train_data_loader, test_data_loader,
              model, criterion, optimizer, lr_scheduler,
              checkpointer, device)
-
 
 def main():
     args = parse_args()
@@ -106,7 +106,6 @@ def main():
     logger.info("Running with config:\n{}".format(cfg))
 
     launch_job(cfg=cfg, init_method=cfg.INIT_METHOD, func=train)
-
 
 if __name__ == '__main__':
     main()

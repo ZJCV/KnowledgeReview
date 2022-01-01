@@ -3,11 +3,11 @@
 # KnowledgeReview/rfd/engine/trainer.py: 15
 # KnowledgeReview/tools/test.py: 11
 # KnowledgeReview/tools/train.py: 11
-numpy == 1.21.0
+numpy == 1.21.2
 
 # KnowledgeReview/rfd/criterion/rfd_loss.py: 11,12
 # KnowledgeReview/rfd/distill/build.py: 10
-# KnowledgeReview/rfd/distill/rfd_distiller.py: 10,12,13
+# KnowledgeReview/rfd/distill/rfd_distiller.py: 10,12,13,14
 # KnowledgeReview/rfd/engine/inference.py: 12
 # KnowledgeReview/rfd/engine/trainer.py: 13,16,18,19,46
 # KnowledgeReview/rfd/model/build.py: 10
@@ -15,18 +15,19 @@ numpy == 1.21.0
 # KnowledgeReview/rfd/model/resnet/custom_basicblock.py: 10,11
 # KnowledgeReview/rfd/model/resnet/custom_bottlneck.py: 10,11
 # KnowledgeReview/rfd/model/resnet/resnet.py: 10,12,13,14
+# KnowledgeReview/tests/distiller.py: 10
 # KnowledgeReview/tests/mobilenet.py: 10
 # KnowledgeReview/tests/resnet.py: 10
 # KnowledgeReview/tools/test.py: 12
 # KnowledgeReview/tools/train.py: 12
-torch == 1.9.0
+torch == 1.9.0+cu111
 
 # KnowledgeReview/rfd/model/mobilenet/mobilenet_v2.py: 16
 # KnowledgeReview/rfd/model/resnet/custom_basicblock.py: 12
 # KnowledgeReview/rfd/model/resnet/custom_bottlneck.py: 12
 # KnowledgeReview/rfd/model/resnet/resnet.py: 15
 # KnowledgeReview/tests/mobilenet.py: 12
-torchvision == 0.10.0
+torchvision == 0.10.0+cu111
 
 # KnowledgeReview/rfd/engine/inference.py: 13
 tqdm == 4.61.2
@@ -38,13 +39,14 @@ yacs == 0.1.8
 # KnowledgeReview/rfd/criterion/build.py: 10,11,12
 # KnowledgeReview/rfd/criterion/rfd_loss.py: 13,14
 # KnowledgeReview/rfd/distill/build.py: 12
-# KnowledgeReview/rfd/distill/rfd_distiller.py: 14,15
+# KnowledgeReview/rfd/distill/rfd_distiller.py: 15,16
 # KnowledgeReview/rfd/engine/inference.py: 18
 # KnowledgeReview/rfd/engine/trainer.py: 28,31
 # KnowledgeReview/rfd/model/build.py: 11,12
 # KnowledgeReview/rfd/model/mobilenet/mobilenet_v2.py: 18
 # KnowledgeReview/rfd/model/resnet/resnet.py: 17
+# KnowledgeReview/tests/distiller.py: 11
 # KnowledgeReview/tests/mobilenet.py: 15
 # KnowledgeReview/tools/test.py: 23
 # KnowledgeReview/tools/train.py: 26
-zcls == 0.11.1
+zcls == 0.15.1

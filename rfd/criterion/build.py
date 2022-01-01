@@ -9,7 +9,7 @@
 
 from zcls.model import registry
 from zcls.model.criterions.crossentropy_loss import CrossEntropyLoss
-from zcls.model.criterions.label_smoothing_loss import LabelSmoothingLoss
+from zcls.model.criterions.label_smoothing_loss import get_label_entropy_loss
 
 from .rfd_loss import RFDLoss
 
