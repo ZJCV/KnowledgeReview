@@ -129,6 +129,6 @@ class RFDDistiller(nn.Module):
                 children.requires_grad_(False)
                 children.eval()
             else:
-                children.train()
+                children.train(mode=mode)
 
         return self
